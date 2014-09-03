@@ -1,7 +1,7 @@
 <h1>Tasks</h1>
 
 <ul>
-  <% @tasks.each do |task| %>
+  <% @tasks.not_done.each do |task| %>
     <li>
       <%= task.name %>
       <form action="/tasks/<%= task.id %>" method="post">
@@ -9,6 +9,16 @@
         <input name="task[done]" type="hidden" value="true">
         <button>Mark done</button>
       </form>
+    </li>
+  <% end %>
+</ul>
+
+<h1>Finished Tasks</h1>
+
+<ul>
+  <% @tasks.done.each do |task| %>
+    <li>
+      <%= task.name %>
     </li>
   <% end %>
 </ul>

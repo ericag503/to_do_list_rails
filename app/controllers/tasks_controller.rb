@@ -34,4 +34,9 @@ class TasksController < ApplicationController
     @task.destroy
     render('tasks/destroy.html.erb')
   end
+
+  def done
+    @task = Task.where(:done => false)
+    render('tasks/index.html.erb')
+  end
 end
